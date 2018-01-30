@@ -1,8 +1,14 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 import twitter
+import os.path
+import argparse
 
 max_api_calls=10000
 
-def getData(screenName):
+
+def get_data(screenName):
     with open('secrets/consumerkey', 'r') as file:
         consumerkey = file.read().strip()
     with open('secrets/consumersecret', 'r') as file:
@@ -18,7 +24,14 @@ def getData(screenName):
                   access_token_secret=accesstokensecret,
                   sleep_on_rate_limit=True)
 
-    with open(screenName, "w") as data_file:
+    data_file_name=screenName
+    if os.path.isfile(screenName):
+        i=1
+        while os.path.isfile(screenName+"("+str(i)+")"):
+            i+=1
+        data_file_name=screenName+"("+str(i)+")"
+
+    with open(data_file_name, "w") as data_file:
         cursor =- 1
         api_calls = 0
         while cursor != 0 and api_calls < max_api_calls:
@@ -32,7 +45,9 @@ def getData(screenName):
 
 
 if __name__ == "__main__":
-    getData("SamsungDK")
-    #getData("larsloekke")
+    parser = argparse.ArgumentParser()
+    parser.add_argument("screen_name", help="Twitter username")
+    args = parser.parse_args()
+    get_data(args.screen_name)
 
 
