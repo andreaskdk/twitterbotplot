@@ -32,3 +32,7 @@ This command will create a file containing the join-dates of all followers of `[
 ```
 python scatterplot [twitteruser]
 ```
+
+# How it works
+
+The Twitter API does not actually expose when someone started following someone else, but it does expose the order in which users have started following someone. As shown by the New York times this is enough to clearly see the patterns for the Devumi bots, because Devumi has not been very careful when creating the fake account, so many of them are created within a short period of time. 
