@@ -11,7 +11,7 @@ In order to use this code the following steps must be performed:
 * Clone this repository
 
 ```
-git clone https:
+git clone https://github.com/andreaskdk/twitterbotplot.git
 ```
 
 * Install python prerequisites
@@ -24,13 +24,13 @@ pip install bokeh
 
 * Retrieve the data:
 ```
-python getTwitterData [twitteruser]
+python retrieve_data.py [twitteruser]
 ```
 This command will create a file containing the join-dates of all followers of `[twitteruser]`. This may take a quite a while, because of limitations on the number of calls to the Twitter API. With a regular account you can make 15 API calls every 15 minutes, and with every calls it is possible to retrieve 200 followers. 
 
 * Plot the data with Bokeh:
 ```
-python scatterplot [twitteruser]
+python scatterplot.py [twitteruser]
 ```
 
 # How it works
